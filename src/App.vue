@@ -1,47 +1,36 @@
 <script setup>
 import { ref } from 'vue';
 
-const title = ref('Title');
-const content = ref('My content');
+const title = ref([]);
+const content = ref([]);
+/*const thumbnail = ref('Event img')
 const pros = ref([]);
-const cons = ref([]);
+const cons = ref([]);*/
 
-fetch('https://mock-api.h.kjc.dk/example',{
+
+fetch('https://process.mg-visions.com/wp-json/wp/v2/events', {
   method: 'get',
 })
   .then((response) => {
     return response.json();
   })
-  .then((response)  => {
-    console.log(response);
+  .then((response) => {
+    console.log(response[0]);
     title.value = response.data.title;
     content.value = response.data.content;
-    pros.value = response.data.pros;
-    cons.value = response.data.cons;
   });
 </script>
 
 <template>
   <div>
-    <h2>{{ title }}</h2>
-    <p>{{ content }}</p>
-    <hr>
     <h3>Pros</h3>
-    <ul>
-      <li v-for="item in pros">Single pro goes here
-      {{ item }}
-      </li>
-    </ul>
-
-    <h3>Cons</h3>
-    <ul>
-      <li v-for="item in cons">Single con goes here
-      {{ item }}
-      </li>
-    </ul>
+      <ul>
+        <li v-for="item in title">Single title goes here
+          {{ title }}
+          <p>{{ content }}</p>
+        </li>
+      </ul>
   </div>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>
