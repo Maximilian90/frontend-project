@@ -44,7 +44,7 @@ const events = ref([]);
 fetch('https://process.mg-visions.com/wp-json/wp/v2/events')
   .then(response => response.json())
   .then(data => events.value = data);
-/*
+
 function getFeaturedImageUrl(event) {
   if (event._embedded && event._embedded['wp:featuredmedia'] && event._embedded['wp:featuredmedia'][0].source_url) {
     return event._embedded['wp:featuredmedia'][0].source_url;
@@ -52,7 +52,7 @@ function getFeaturedImageUrl(event) {
     return '';
   }
 }
-*/
+
 </script>
 
 <template>
@@ -61,7 +61,7 @@ function getFeaturedImageUrl(event) {
     <ul>
       <li v-for="event in events" :key="event.id">
         <h4>{{ event.title.rendered }}</h4>
-        <!--<img :src="getFeaturedImageUrl(event)" :alt="event.title.rendered" />-->
+        <img :src="getFeaturedImageUrl(event)" :alt="event.title.rendered" />
         <p>{{ event.content.rendered }}</p>
       </li>
     </ul>
