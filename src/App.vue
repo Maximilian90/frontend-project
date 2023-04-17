@@ -46,8 +46,10 @@ fetch('https://process.mg-visions.com/wp-json/wp/v2/events')
   .then(data => events.value = data);
 
 function getFeaturedImageUrl(event) {
-  if (event._embedded && event._embedded['wp:featuredmedia'] && event._embedded['wp:featuredmedia'][0].source_url) {
-    return event._embedded['wp:featuredmedia'][0].source_url;
+const content = event.content.rendered;
+const match = content.match(/<img[^>]+src="([^">]+)"/);
+  if (match) {
+    return match[1];
   } else {
     return '';
   }
