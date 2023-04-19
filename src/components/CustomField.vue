@@ -12,6 +12,6 @@ const props = defineProps({
 
 <template>
   <div class="custom-field-block">
-    <p>{{ customFieldValue }}</p>
+    <p>{{ props.customFieldValue }}</p>
   </div>
 </template>

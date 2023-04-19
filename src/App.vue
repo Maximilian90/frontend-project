@@ -8,7 +8,7 @@ fetch('https://process.mg-visions.com/wp-json/wp/v2/events')
   .then(response => response.json())
   .then(data => {
     events.value = data.map(event => {
-      const customFieldValue = event.meta['yourprefix_demo_datepicker'] ? event.meta['yourprefix_demo_datepicker'][0] : '';
+      const customFieldValue = event.meta.yourprefix_demo_datepicker ? event.meta.yourprefix_demo_datepicker[0] : '';
       return { ...event, customFieldValue };
     });
   });
@@ -31,7 +31,7 @@ function getFeaturedImageUrl(event) {
     <ul>
       <li v-for="event in events" :key="event.id">
         <h4>{{ event.title.rendered }}</h4>
-        <CustomField :customFieldValue="event.meta.yourprefix_demo_datepicker" />
+        <CustomField :customFieldValue="event.customFieldValue" />
         <img :src="getFeaturedImageUrl(event)" :alt="event.title.rendered" />
         <p>{{ event.content.rendered }}</p>
       </li>
