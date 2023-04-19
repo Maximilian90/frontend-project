@@ -11,5 +11,7 @@ const props = defineProps({
 </script>
 
 <template>
-  <p>{{ customFieldValue }}</p>
+  <div class="custom-field-block">
+    <p>{{ customFieldValue }}</p>
+  </div>
 </template>
