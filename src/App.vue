@@ -33,99 +33,53 @@ fetch('https://process.mg-visions.com/wp-json/wp/v2/events')
 </script>
 
 <template>
-  <div>
-    <h3>Events</h3>
-    <div class="flex_container_cal_list">
-      <div class="date_box" v-for="event in events" :key="event.id">
-        <CustomField :customFieldValue="event.customFieldValue" />
-      </div>
-      <div class="content_box" v-for="event in events" :key="event.id">
-        <h4>{{ event.title.rendered }}</h4>
-        <p>{{ event.plainText }}</p>
-      </div>
-      <div class="img_box" v-for="event in events" :key="event.id">
-        <img class="img_list" :src="getFeaturedImageUrl(event)" :alt="event.title.rendered" />
+  <div class="event_calender_list">
+    <h2>April 2023</h2>
+    <div class="event_calender_row" v-for="event in events" :key="event.id">
+      <div class="event_calender_item">
+        <div class="event_calender_date_tag">{{ event.customFieldValue }} <p>date</p></div>
+        <div class="event_calender_content">
+          <div class="event_detail">
+            <h4>{{ event.title.rendered }}</h4>
+            <p>{{ event.plainText }}</p>
+          </div>
+          <div class="event_img">
+            <img class="img_list" :src="getFeaturedImageUrl(event)" :alt="event.title.rendered" />
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
-<style>
-
-.flex_container_cal_list {
+<style scoped>
+.event_calender_row {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
 }
 
-.date_box {
-  background-color: white;
-  width: calc(33.33% - 10px);
-  margin-right: 10px;
-  padding: 10px;
-}
-
-.content_box {
-  background-color: white;
-  width: calc(33.33% - 10px);
-  margin-right: 10px;
+.event_calender_item {
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 10px;
+  align-items: center;
+  margin: 0 1rem 1rem 0;
 }
 
-.text_box {
-  width: 50%;
+.event_calender_date_tag {
+  flex: 0 0 auto;
+  margin-right: 1rem;
 }
 
-.img_box {
-  width: calc(33.33% - 10px);
-  margin-left: 10px;
-  text-align: center;
+.event_calender_content {
+  display: flex;
+  align-items: center;
 }
 
-.img_list {
-  max-width: 100%;
-  height: auto;
+.event_detail {
+  flex: 1 1 auto;
+  margin-right: 1rem;
 }
 
-/* Media queries */
-@media only screen and (max-width: 768px) {
-  .date_box,
-  .content_box,
-  .img_box {
-    width: calc(50% - 10px);
-    margin-right: 10px;
-    margin-bottom: 20px;
-  }
-
-  .img_box {
-    margin-left: 0;
-  }
-
-  .text_box {
-    width: 60%;
-  }
-}
-
-@media only screen and (max-width: 480px) {
-  .flex_container_cal_list {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .date_box,
-  .content_box,
-  .img_box {
-    width: 100%;
-    margin-right: 0;
-    margin-bottom: 20px;
-  }
-
-  .text_box {
-    width: 100%;
-    margin-bottom: 10px;
-  }
+.event_img {
+  flex: 0 0 200px;
 }
 </style>
