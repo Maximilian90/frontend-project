@@ -21,11 +21,11 @@ const getFeaturedImageUrl = (event) => {
   }
 };
 
-fetch('https://process.mg-visions.com/wp-json/wp/v2/events')
+fetch('https://sesh.mg-visions.com/index.php/wp-json/wp/v2/event')
   .then(response => response.json())
   .then(data => {
     events.value = data.map(event => {
-      const customFieldValue = event.meta.yourprefix_demo_datepicker ? event.meta.yourprefix_demo_datepicker[0] : '';
+      const customFieldValue = event.meta.yourprefix_demo_textdate ? event.meta.yourprefix_demo_textdate[0] : '';
       const plainText = getPlainText(event.content.rendered);
       return { ...event, customFieldValue, plainText };
     });
@@ -37,7 +37,8 @@ fetch('https://process.mg-visions.com/wp-json/wp/v2/events')
     <h2>April 2023</h2>
     <div class="event_calender_row" v-for="event in events" :key="event.id">
       <div class="event_calender_item">
-        <div class="event_calender_date_tag">{{ event.customFieldValue }} <p>date</p></div>
+        <div class="event_calender_date_tag">{{ event.customFieldValue }} <p>date</p>
+        </div>
         <div class="event_calender_content">
           <div class="event_detail">
             <h4>{{ event.title.rendered }}</h4>
