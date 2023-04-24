@@ -62,7 +62,8 @@ fetch('https://sesh.mg-visions.com/index.php/wp-json/wp/v2/event')
 .event_calender_item {
   display: flex;
   align-items: center;
-  margin: 0 1rem 1rem 0;
+  margin: 1rem 1rem 1rem 1rem;
+  background-color: rgb(0, 0, 0);
 }
 
 .event_calender_date_tag {
@@ -77,7 +78,7 @@ fetch('https://sesh.mg-visions.com/index.php/wp-json/wp/v2/event')
 
 .event_detail {
   flex: 1 1 auto;
-  margin-right: 1rem;
+  margin-right: 2rem;
 }
 
 .event_img {
