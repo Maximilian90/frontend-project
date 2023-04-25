@@ -17,7 +17,7 @@ const getPlainText = (content) => {
 const getPlainDate = (dateString) => {
   const year = dateString.substring(0, 4);
   const monthNumber = parseInt(dateString.substring(4, 6)) - 1; 
-  const day = parseInt(dateString.substring(6, 8)); r
+  const day = parseInt(dateString.substring(6, 8)); 
   
   const monthNames = [
     "January", "February", "March",
