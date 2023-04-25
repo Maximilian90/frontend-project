@@ -1,13 +1,19 @@
 <script setup>
+import { ref } from 'vue';
+import { defineProps } from 'vue';
+
 const props = defineProps({
   title: String,
-  message: String,
 });
+
+
 
 const title = ref('');
 const date = ref('');
 const location = ref('');
 const content = ref('');
+const username = ref('');
+const password = ref('');
 
 const onCreatePost = () => {
   // The fields send, to create post
@@ -22,7 +28,7 @@ const onCreatePost = () => {
 const encodedUser = btoa(`${username.value}:${password.value}`);
 
   // Send the POST request to the server
-  fetch('https://sesh.mg-visions.com/index.php/wp-json/wp/v2/event', {
+  fetch('https://sesh.mg-visions.com/index.php/wp-json/wp/v2/posts', {
     // The method have to be the type of post, so the server knows we create a new post
     method: 'post',
     // Headers sent along the post
@@ -66,7 +72,7 @@ const encodedUser = btoa(`${username.value}:${password.value}`);
             <label for="date">Dato</label>
             <div>
                 <textarea
-                v-model="excerpt"
+                v-model="date"
                 id="date"
                 ></textarea>
             </div>
@@ -76,7 +82,7 @@ const encodedUser = btoa(`${username.value}:${password.value}`);
             <label for="location">Adresse</label>
             <div>
                 <textarea
-                v-model="content"
+                v-model="location"
                 id="location"
                 ></textarea>
             </div>

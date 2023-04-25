@@ -2,6 +2,7 @@
 import { ref } from 'vue';
 import OpretForm from './components/OpretForm.vue';
 
+
 const events = ref([]);
 const showForm = ref(false);
 
@@ -61,12 +62,11 @@ fetch('https://sesh.mg-visions.com/index.php/wp-json/wp/v2/event')
   <div class="event_calender_list">
     <div>
       <h2>April 2023</h2>
-      
     </div>
     <div class="event_calender_row" v-for="event in events" :key="event.id">
       <div class="event_calender_item">
         <div class="event_calender_date_tag">
-          <p v-if="event">{{ event.plainDate }}</p> 
+          <p class="date_style" v-if="event">{{ event.plainDate }}</p> 
         </div>
         <div class="event_calender_content">
           <div class="event_detail">
@@ -103,8 +103,9 @@ fetch('https://sesh.mg-visions.com/index.php/wp-json/wp/v2/event')
 }
 
 .event_calender_date_tag {
-  flex: 0 0 auto;
-  margin-right: 1rem;
+  flex: 0 auto;
+  margin: 1rem;
+  justify-content:first baseline;
 }
 
 .event_calender_content {
@@ -120,4 +121,20 @@ fetch('https://sesh.mg-visions.com/index.php/wp-json/wp/v2/event')
 .event_img {
   flex: 0 0 200px;
 }
+
+.btn_addevent {
+  float: right;
+  height: 35px;
+  width: 100px;
+}
+
+h3 {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.date_style {
+  font-size: 20px;
+}
+
 </style>
