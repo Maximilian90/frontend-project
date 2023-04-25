@@ -53,15 +53,16 @@ fetch('https://sesh.mg-visions.com/index.php/wp-json/wp/v2/event')
     });
   });
 
-/*<my-component title="Hello" message="World!" />*/
+
 
 </script>
 
 <template>
-  <button @click="showForm = true">Opret Event</button>
+  
   <div class="event_calender_list">
-    <div>
+    <div class="list_head">
       <h2>April 2023</h2>
+      <button @click="showForm = true">Opret Event</button>
     </div>
     <div class="event_calender_row" v-for="event in events" :key="event.id">
       <div class="event_calender_item">
@@ -70,9 +71,9 @@ fetch('https://sesh.mg-visions.com/index.php/wp-json/wp/v2/event')
         </div>
         <div class="event_calender_content">
           <div class="event_detail">
-            <p>{{ event.eventLocation }}</p>
+            <p class="event_loc">{{ event.eventLocation }}</p>
             <h3>{{ event.title.rendered }}</h3>
-            <p>{{ event.plainText }}</p>
+            <p class="event_ex">{{ event.plainText }}</p>
           </div>
           <div class="event_img">
             <img class="img_list" :src="getFeaturedImageUrl(event)" :alt="event.title.rendered" />
@@ -84,16 +85,19 @@ fetch('https://sesh.mg-visions.com/index.php/wp-json/wp/v2/event')
 
   <teleport to="body">
     <div v-if="showForm">
-      <OpretForm />
+          <OpretForm />
     </div>
   </teleport>
 </template>
 
 <style scoped>
+
+
 .event_calender_row {
   display: flex;
   flex-wrap: wrap;
 }
+
 
 .event_calender_item {
   display: flex;
@@ -116,25 +120,60 @@ fetch('https://sesh.mg-visions.com/index.php/wp-json/wp/v2/event')
 .event_detail {
   flex: 1 1 auto;
   margin-right: 2rem;
+  padding: 1rem;
+  background-color: white;
 }
 
 .event_img {
-  flex: 0 0 200px;
+  flex: 0 0 auto;
+}
+
+.img_list {
+  width: 60vh;
+  height: auto;
 }
 
 .btn_addevent {
-  float: right;
   height: 35px;
-  width: 100px;
+  width: 100px; 
+  
 }
 
+.list_head {
+  display: flex;
+  justify-content: space-between;  
+}
+
+
+
+
+/* styling */
 h3 {
-  font-size: 20px;
+  color: black;
+  font-size: 1.5em;
   font-weight: 600;
 }
 
 .date_style {
-  font-size: 20px;
+  text-align: center;
+  font-size: 1.25em;
+  font-weight: 600;
+  padding: 1rem;
+  color: black;
+  background-color: rgb(255, 255, 255);
 }
+
+.event_loc {
+  color: rgb(15, 15, 15);
+  font-weight: 500;
+  font-size: 1em;
+}
+
+.event_ex {
+  color: black;
+  font-size: 1em;
+}
+
+
 
 </style>

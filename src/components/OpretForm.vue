@@ -54,64 +54,106 @@ const encodedUser = btoa(`${username.value}:${password.value}`);
 </script>
 
 <template>
+  <div class="form-overlay">
+    <div class="form_container"> 
+      
+        <form @submit.prevent="onCreatePost">
 
-    <form @submit.prevent="onCreatePost">
-
-        <div>
-            <label for="title">Title</label>
             <div>
-                <input
-                type="text"
-                id="title"
-                v-model="title"
-                >
+                <label for="title">Title</label>
+                <div>
+                    <input
+                    type="text"
+                    id="title"
+                    v-model="title"
+                    >
+                </div>
             </div>
-        </div>
 
-        <div>
-            <label for="date">Dato</label>
             <div>
-                <textarea
-                v-model="date"
-                id="date"
-                ></textarea>
+                <label for="date">Dato</label>
+                <div>
+                    <textarea
+                    v-model="date"
+                    id="date"
+                    ></textarea>
+                </div>
             </div>
-        </div>
 
-        <div>
-            <label for="location">Adresse</label>
             <div>
-                <textarea
-                v-model="location"
-                id="location"
-                ></textarea>
+                <label for="location">Adresse</label>
+                <div>
+                    <textarea
+                    v-model="location"
+                    id="location"
+                    ></textarea>
+                </div>
             </div>
-        </div>
 
-        <div>
-            <label for="content">Content</label>
             <div>
-                <textarea
-                v-model="content"
-                id="content"
-                ></textarea>
+                <label for="content">Content</label>
+                <div>
+                    <textarea
+                    v-model="content"
+                    id="content"
+                    ></textarea>
+                </div>
             </div>
-        </div>
 
-    <button type="submit">Create Post</button>
-
-</form>
-
+        <button type="submit">Create Post</button>
+              
+      </form>
+  </div>
+</div>
 </template>
 
 <style scoped>
-.overlay {
+.form-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
-  z-index: -1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+/* Center the form contents vertically and horizontally */
+.form-overlay form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 500px;
+  background-color: #0a0a0a;
+  padding: 2rem;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Style form input fields and buttons */
+.form-overlay input,
+.form-overlay button {
+  width: 100%;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.form-overlay button {
+  background-color: #CC3333;
+  color: #ffffff;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+}
+
+.form-overlay button:hover {
+  background-color: #CC3333;
 }
 </style>
