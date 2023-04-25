@@ -1,8 +1,9 @@
 <script setup>
 import { ref } from 'vue';
-
+import OpretForm from './components/OpretForm.vue';
 
 const events = ref([]);
+const showForm = ref(false);
 
 
 const getPlainText = (content) => {
@@ -51,12 +52,17 @@ fetch('https://sesh.mg-visions.com/index.php/wp-json/wp/v2/event')
     });
   });
 
+/*<my-component title="Hello" message="World!" />*/
 
 </script>
 
 <template>
+  <button @click="showForm = true">Opret Event</button>
   <div class="event_calender_list">
-    <h2>April 2023</h2>
+    <div>
+      <h2>April 2023</h2>
+      
+    </div>
     <div class="event_calender_row" v-for="event in events" :key="event.id">
       <div class="event_calender_item">
         <div class="event_calender_date_tag">
@@ -75,6 +81,12 @@ fetch('https://sesh.mg-visions.com/index.php/wp-json/wp/v2/event')
       </div>
     </div>
   </div>
+
+  <teleport to="body">
+    <div v-if="showForm">
+      <OpretForm />
+    </div>
+  </teleport>
 </template>
 
 <style scoped>
