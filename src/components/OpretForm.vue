@@ -16,14 +16,14 @@ const password = ref('');
 const onCreatePost = () => {
   // The fields send, to create post
   const body = {
-    title:      title.value,
-    date:       date.value,
-    location:   location.value,
-    content:    content.value,
+    title: title.value,
+    date: date.value,
+    location: location.value,
+    content: content.value,
 
   };
 
-const encodedUser = btoa(`${username.value}:${password.value}`);
+  const encodedUser = btoa(`${username.value}:${password.value}`);
 
   // Send the POST request to the server
   fetch('https://sesh.mg-visions.com/index.php/wp-json/wp/v2/event', {
@@ -32,7 +32,7 @@ const encodedUser = btoa(`${username.value}:${password.value}`);
     // Headers sent along the post
     headers: {
       // Tells the server, that it can expect JSON
-      'Content-Type':  'application/json',
+      'Content-Type': 'application/json',
       // Send the username and password to the server
       'Authorization': `Basic ${encodedUser}`
     },
@@ -53,56 +53,43 @@ const encodedUser = btoa(`${username.value}:${password.value}`);
 
 <template>
   <div class="form-overlay">
-    <div class="form_container"> 
-      
-        <form @submit.prevent="onCreatePost">
+    <div class="form_container">
 
-            <div>
-                <label for="title">Title</label>
-                <div>
-                    <input
-                    type="text"
-                    id="title"
-                    v-model="title"
-                    >
-                </div>
-            </div>
+      <form @submit.prevent="onCreatePost">
 
-            <div>
-                <label for="date">Dato</label>
-                <div>
-                    <textarea
-                    v-model="date"
-                    id="date"
-                    ></textarea>
-                </div>
-            </div>
+        <div>
+          <label for="title">Title</label>
+          <div>
+            <input type="text" id="title" v-model="title">
+          </div>
+        </div>
 
-            <div>
-                <label for="location">Adresse</label>
-                <div>
-                    <textarea
-                    v-model="location"
-                    id="location"
-                    ></textarea>
-                </div>
-            </div>
+        <div>
+          <label for="date">Dato</label>
+          <div>
+            <textarea v-model="date" id="date"></textarea>
+          </div>
+        </div>
 
-            <div>
-                <label for="content">Content</label>
-                <div>
-                    <textarea
-                    v-model="content"
-                    id="content"
-                    ></textarea>
-                </div>
-            </div>
+        <div>
+          <label for="location">Adresse</label>
+          <div>
+            <textarea v-model="location" id="location"></textarea>
+          </div>
+        </div>
+
+        <div>
+          <label for="content">Content</label>
+          <div>
+            <textarea v-model="content" id="content"></textarea>
+          </div>
+        </div>
 
         <button type="submit">Create Post</button>
-              
+
       </form>
+    </div>
   </div>
-</div>
 </template>
 
 <style scoped>
