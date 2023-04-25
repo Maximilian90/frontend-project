@@ -6,8 +6,6 @@ const props = defineProps({
   title: String,
 });
 
-
-
 const title = ref('');
 const date = ref('');
 const location = ref('');
