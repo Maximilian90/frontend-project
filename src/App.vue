@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue';
-import CustomField from './components/CustomField.vue';
+
 
 const events = ref([]);
 
@@ -9,6 +9,23 @@ const getPlainText = (content) => {
   const html = parser.parseFromString(content, 'text/html');
   const firstParagraph = html.querySelector('p');
   return firstParagraph.textContent;
+};
+
+const getPlainDate = (dateString) => {
+  const year = dateString.substring(0, 4);
+  const monthNumber = parseInt(dateString.substring(4, 6)) - 1; // month number starts from 0
+  const day = parseInt(dateString.substring(6, 8)); // parse day string to integer
+  
+  const monthNames = [
+    "January", "February", "March",
+    "April", "May", "June", "July",
+    "August", "September", "October",
+    "November", "December"
+  ];
+  
+  const monthName = monthNames[monthNumber];
+  
+  return `${day} ${monthName}`;
 };
 
 const getFeaturedImageUrl = (event) => {
@@ -25,11 +42,12 @@ fetch('https://sesh.mg-visions.com/index.php/wp-json/wp/v2/event')
   .then(response => response.json())
   .then(data => {
     events.value = data.map(event => {
-      const customFieldValue = event.meta.yourprefix_demo_textdate ? event.meta.yourprefix_demo_textdate[0] : '';
+      const plainDate = getPlainDate(event.acf.event_date);
       const plainText = getPlainText(event.content.rendered);
-      return { ...event, customFieldValue, plainText };
+      return { ...event, plainText, plainDate };
     });
   });
+
 </script>
 
 <template>
@@ -37,7 +55,8 @@ fetch('https://sesh.mg-visions.com/index.php/wp-json/wp/v2/event')
     <h2>April 2023</h2>
     <div class="event_calender_row" v-for="event in events" :key="event.id">
       <div class="event_calender_item">
-        <div class="event_calender_date_tag">{{ event.customFieldValue }} <p>date</p>
+        <div class="event_calender_date_tag">
+          <p v-if="event">{{ event.plainDate }}</p> 
         </div>
         <div class="event_calender_content">
           <div class="event_detail">
