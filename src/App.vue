@@ -4,6 +4,7 @@ import { ref } from 'vue';
 
 const events = ref([]);
 
+
 const getPlainText = (content) => {
   const parser = new DOMParser();
   const html = parser.parseFromString(content, 'text/html');
@@ -38,15 +39,18 @@ const getFeaturedImageUrl = (event) => {
   }
 };
 
+
+
 fetch('https://sesh.mg-visions.com/index.php/wp-json/wp/v2/event')
   .then(response => response.json())
   .then(data => {
     events.value = data.map(event => {
       const plainDate = getPlainDate(event.acf.event_date);
       const plainText = getPlainText(event.content.rendered);
-      return { ...event, plainText, plainDate };
+      return { ...event, plainText, plainDate, eventLocation: event.acf.location };
     });
   });
+
 
 </script>
 
@@ -60,7 +64,8 @@ fetch('https://sesh.mg-visions.com/index.php/wp-json/wp/v2/event')
         </div>
         <div class="event_calender_content">
           <div class="event_detail">
-            <h4>{{ event.title.rendered }}</h4>
+            <p>{{ event.eventLocation }}</p>
+            <h3>{{ event.title.rendered }}</h3>
             <p>{{ event.plainText }}</p>
           </div>
           <div class="event_img">
