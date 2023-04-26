@@ -11,8 +11,11 @@ const getPlainText = (content) => {
   const parser = new DOMParser();
   const html = parser.parseFromString(content, 'text/html');
   const firstParagraph = html.querySelector('p');
-  return firstParagraph.textContent;
+  const plainText = firstParagraph.textContent;
+  const noHtmlText = plainText.replace(/<(?:.|\n)*?>/gm, '');
+  return noHtmlText;
 };
+
 
 const getPlainDate = (dateString) => {
   const year = dateString.substring(0, 4);
@@ -73,7 +76,7 @@ fetch('https://sesh.mg-visions.com/index.php/wp-json/wp/v2/event')
           <div class="event_detail">
             <p class="event_loc">{{ event.eventLocation }}</p>
             <h3>{{ event.title.rendered }}</h3>
-            <p class="event_ex">{{ event.plainText }}</p>
+            <p class="event_ex">{{ getPlainText(event.excerpt.rendered) }}</p>
           </div>
           <div class="event_img">
             <img class="img_list" :src="getFeaturedImageUrl(event)" :alt="event.title.rendered" />

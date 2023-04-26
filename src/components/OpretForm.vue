@@ -34,7 +34,7 @@ const onCreatePost = () => {
       // Tells the server, that it can expect JSON
       'Content-Type': 'application/json',
       // Send the username and password to the server
-      'Authorization': `Basic ${encodedUser}`
+      'Authorization': `Basic YWRtaW46YWRtaW4=`
     },
     // This is the body of the server request e.i. the fields sent along
     body: JSON.stringify(body),
