@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue';
 import OpretForm from './components/OpretForm.vue';
-
+import SeshFooter from './components/SeshFooter.vue';
 
 const events = ref([]);
 const showForm = ref(false);
@@ -70,7 +70,7 @@ fetch('https://sesh.mg-visions.com/index.php/wp-json/wp/v2/event')
       </div>
       <button @click="showForm = true">Opret Event</button>
     </div>
-    <h2>April 2023</h2>
+    <h2 class="month_layout">April 2023<hr></h2>
     <div class="event_calender_row" v-for="event in events" :key="event.id">
       <div class="event_calender_item">
         <div class="event_calender_date_tag">
@@ -95,6 +95,10 @@ fetch('https://sesh.mg-visions.com/index.php/wp-json/wp/v2/event')
           <OpretForm />
     </div>
   </teleport>
+
+  <div>
+    <SeshFooter/>
+  </div>
 </template>
 
 <style scoped>
@@ -132,11 +136,11 @@ fetch('https://sesh.mg-visions.com/index.php/wp-json/wp/v2/event')
 }
 
 .event_img {
-  flex: 1 1 auto;
+  flex: 0 1 auto;
 }
 
 .img_list {
-  width: 60vh;
+  max-width: 100%;
   height: auto;
 }
 
@@ -151,7 +155,9 @@ fetch('https://sesh.mg-visions.com/index.php/wp-json/wp/v2/event')
   justify-content: space-between;  
 }
 
-
+.month_layout {
+  
+}
 
 
 /* styling */
