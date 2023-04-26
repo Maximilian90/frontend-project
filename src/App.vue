@@ -23,9 +23,9 @@ const getPlainDate = (dateString) => {
   const day = parseInt(dateString.substring(6, 8)); 
   
   const monthNames = [
-    "January", "February", "March",
-    "April", "May", "June", "July",
-    "August", "September", "October",
+    "Januar", "Februar", "Marts",
+    "April", "Maj", "Juni", "Juli",
+    "August", "September", "Oktober",
     "November", "December"
   ];
   

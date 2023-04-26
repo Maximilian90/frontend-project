@@ -56,9 +56,9 @@ const onCreatePost = () => {
     <div class="form_container">
 
       <form @submit.prevent="onCreatePost">
-
+        <h2 class="formtitel" >Opret Event</h2>
         <div>
-          <label for="title">Title</label>
+          <label for="title">Event Navn</label>
           <div>
             <input type="text" id="title" v-model="title">
           </div>
@@ -79,13 +79,13 @@ const onCreatePost = () => {
         </div>
 
         <div>
-          <label for="content">Content</label>
+          <label for="content">Beskrivelse</label>
           <div>
             <textarea v-model="content" id="content"></textarea>
           </div>
         </div>
 
-        <button type="submit">Create Post</button>
+        <button class="createpostknap" type="submit">Create Post</button>
 
       </form>
     </div>
@@ -115,7 +115,7 @@ const onCreatePost = () => {
   width: 100%;
   max-width: 500px;
   background-color: #0a0a0a;
-  padding: 2rem;
+  padding: 3rem;
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
@@ -136,9 +136,31 @@ const onCreatePost = () => {
   font-weight: bold;
   border: none;
   cursor: pointer;
+  width: 150px;
 }
 
 .form-overlay button:hover {
   background-color: #CC3333;
 }
+
+#title {
+  width: 300px;
+  height: 10px;
+}
+
+#date, #location {
+  width: 300px;
+  height: 30px;
+}
+
+#content {
+  width: 300px;
+  height: 100px;
+  margin-bottom: 50px;
+}
+
+.formtitel {
+  justify-content: flex-start;
+}
+
 </style>
