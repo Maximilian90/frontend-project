@@ -165,6 +165,7 @@ const onCreatePost = () => {
   justify-content: flex-start;
   margin-bottom: 10px;
   margin-top: 10px;
+  font-weight: 500;
 }
 
 .formbeskrivelse {
