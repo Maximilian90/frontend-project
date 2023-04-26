@@ -64,9 +64,13 @@ fetch('https://sesh.mg-visions.com/index.php/wp-json/wp/v2/event')
   
   <div class="event_calender_list">
     <div class="list_head">
-      <h2>April 2023</h2>
+       <div>
+         <button id="arrow-left"></button>
+         <button id="arrow-right"></button>
+      </div>
       <button @click="showForm = true">Opret Event</button>
     </div>
+    <h2>April 2023</h2>
     <div class="event_calender_row" v-for="event in events" :key="event.id">
       <div class="event_calender_item">
         <div class="event_calender_date_tag">
@@ -128,7 +132,7 @@ fetch('https://sesh.mg-visions.com/index.php/wp-json/wp/v2/event')
 }
 
 .event_img {
-  flex: 0 0 auto;
+  flex: 1 1 auto;
 }
 
 .img_list {
@@ -177,6 +181,22 @@ h3 {
   font-size: 1em;
 }
 
+/* buttons */
 
+#arrow-left {
+  background-image: url('assets/arrowleft.svg');
+  background-color: black;
+  background-size: contain;
+  background-repeat: no-repeat;
+  padding: 1em;
+}
+
+#arrow-right {
+  background-image: url('assets/arrowleft.svg');
+  background-color: black;
+  background-size: contain;
+  background-repeat: no-repeat;
+  padding: 1em;
+}
 
 </style>
