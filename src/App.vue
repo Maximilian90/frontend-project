@@ -68,9 +68,12 @@ fetch('https://sesh.mg-visions.com/index.php/wp-json/wp/v2/event')
          <button id="arrow-left"></button>
          <button id="arrow-right"></button>
       </div>
-      <button @click="showForm = true">Opret Event</button>
+      <button @click="showForm = true" class="btn_addevent">Opret Event</button>
     </div>
-    <h2 class="month_layout">April 2023<hr></h2>
+    <div class="month_layout">
+    <h2 class="h2month">April 2023</h2>
+    <hr class="line">
+    </div>
     <div class="event_calender_row" v-for="event in events" :key="event.id">
       <div class="event_calender_item">
         <div class="event_calender_date_tag">
@@ -147,6 +150,8 @@ fetch('https://sesh.mg-visions.com/index.php/wp-json/wp/v2/event')
 .btn_addevent {
   height: 35px;
   width: 100px; 
+  background-color: #CC3333;
+  color: rgb(255, 255, 255);
   
 }
 
@@ -156,9 +161,20 @@ fetch('https://sesh.mg-visions.com/index.php/wp-json/wp/v2/event')
 }
 
 .month_layout {
-  
+  display: flex;
+  align-items: center;
 }
 
+.h2month {
+  margin-right: 10px;
+}
+
+.line {
+  flex-grow: 1;
+  height: 1px;
+  background-color: black;
+  margin-left: 10px;
+}
 
 /* styling */
 h3 {
