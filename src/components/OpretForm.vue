@@ -57,6 +57,7 @@ const onCreatePost = () => {
 
       <form @submit.prevent="onCreatePost">
         <h2 class="formtitel" >Opret Event</h2>
+        <p class="formbeskrivelse">Få dit skaterevent vist på vores eventside ved at udfylde alle nedenstående felter</p>
         <div>
           <label for="title">Event Navn</label>
           <div>
@@ -85,7 +86,7 @@ const onCreatePost = () => {
           </div>
         </div>
 
-        <button class="createpostknap" type="submit">Create Post</button>
+        <button class="createpostknap" type="submit">Opret Event</button>
 
       </form>
     </div>
@@ -117,7 +118,6 @@ const onCreatePost = () => {
   background-color: #0a0a0a;
   padding: 3rem;
   border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 /* Style form input fields and buttons */
@@ -127,7 +127,6 @@ const onCreatePost = () => {
   padding: 1rem;
   margin-bottom: 1rem;
   border-radius: 5px;
-  border: 1px solid #ccc;
 }
 
 .form-overlay button {
@@ -136,7 +135,7 @@ const onCreatePost = () => {
   font-weight: bold;
   border: none;
   cursor: pointer;
-  width: 150px;
+  width: 130px;
 }
 
 .form-overlay button:hover {
@@ -145,22 +144,33 @@ const onCreatePost = () => {
 
 #title {
   width: 300px;
-  height: 10px;
+  height: 0px;
 }
 
 #date, #location {
   width: 300px;
   height: 30px;
+  margin-bottom: 10px;
+  border-radius: 5px;
 }
 
 #content {
   width: 300px;
   height: 100px;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
+  border-radius: 5px;
 }
 
 .formtitel {
   justify-content: flex-start;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.formbeskrivelse {
+  margin-bottom: 20px;
+  width: auto;
+  font-size: 14px;
 }
 
 </style>
