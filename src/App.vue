@@ -6,7 +6,6 @@ import SeshFooter from './components/SeshFooter.vue';
 const events = ref([]);
 const showForm = ref(false);
 
-
 const getPlainText = (content) => {
   const parser = new DOMParser();
   const html = parser.parseFromString(content, 'text/html');

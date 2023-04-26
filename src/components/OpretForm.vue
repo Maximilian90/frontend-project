@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue';
 import { defineProps } from 'vue';
+import { onMounted } from 'vue';
 
 const props = defineProps({
   title: String,
@@ -49,6 +50,21 @@ const onCreatePost = () => {
     });
 };
 
+const inputFile = ref(null);
+
+function handleFileSelect() {
+  const file = inputFile.value.files[0];
+  // Do something with the selected file
+}
+
+function handleClick() {
+  inputFile.value.click();
+}
+
+onMounted(() => {
+  inputFile.value.addEventListener('change', handleFileSelect);
+});
+
 </script>
 
 <template>
@@ -65,17 +81,26 @@ const onCreatePost = () => {
           </div>
         </div>
 
-        <div>
-          <label for="date">Dato</label>
+        <div class="datoogtid">
+          <div class="datoogtid2">
+            <label class="datolabel" for="date">Dato</label>
+            <div>
+              <textarea v-model="date" id="date"></textarea>
+            </div>
+          </div>
+          <div class="datoogtid2">
+          <label class="datolabel" for="date">Tid</label>
           <div>
             <textarea v-model="date" id="date"></textarea>
           </div>
+          </div>
         </div>
 
-        <div>
-          <label for="location">Adresse</label>
+        <div class="billedeimport">
+          <label class="billedelabel" for="billede">Tilføj Eventbilled</label>
           <div>
-            <textarea v-model="location" id="location"></textarea>
+          <button class="importknap" @click="handleClick">+</button>
+          <input type="file" ref="inputFile" style="display: none;">
           </div>
         </div>
 
@@ -86,8 +111,39 @@ const onCreatePost = () => {
           </div>
         </div>
 
-        <button class="createpostknap" type="submit">Opret Event</button>
+        <div>
+          <label for="author">Event Arrangør</label>
+          <div>
+            <textarea v-model="location" id="author"></textarea>
+          </div>
+        </div>
 
+        <div class="adresseogby">
+          <div class="adresseogby2">
+            <label for="location">Adresse</label>
+            <div>
+              <textarea v-model="date" id="adresse"></textarea>
+            </div>
+          </div>
+          <div class="adresseogby2">
+          <label class="bylabel" for="by">By</label>
+          <div>
+            <textarea v-model="date" id="date"></textarea>
+          </div>
+          </div>
+        </div>
+
+        <div class="pris2">
+          <label for="pris">Pris</label>
+          <div>
+            <textarea v-model="location" id="pris"></textarea>
+          </div>
+        </div>
+
+          <div class="formknapper">
+            <button class="createpostknap" type="submit">Opret Event</button>
+            <button class="createpostknap" type="close">Annullér</button>
+          </div>
       </form>
     </div>
   </div>
@@ -116,8 +172,7 @@ const onCreatePost = () => {
   width: 100%;
   max-width: 500px;
   background-color: #0a0a0a;
-  padding: 3rem;
-  border-radius: 5px;
+  padding: 2rem;
 }
 
 /* Style form input fields and buttons */
@@ -126,7 +181,6 @@ const onCreatePost = () => {
   width: 100%;
   padding: 1rem;
   margin-bottom: 1rem;
-  border-radius: 5px;
 }
 
 .form-overlay button {
@@ -138,6 +192,18 @@ const onCreatePost = () => {
   width: 130px;
 }
 
+button.importknap {
+width: 45px;
+height: 45px;
+font-size: 16px;
+}
+
+button.createpostknap {
+  margin-right: 20px;
+  margin-left: 20px;
+}
+
+
 .form-overlay button:hover {
   background-color: #CC3333;
 }
@@ -147,18 +213,50 @@ const onCreatePost = () => {
   height: 0px;
 }
 
-#date, #location {
+#date, #adresse, #pris {
+  width: 135px;
+  height: 30px;
+}
+
+.datoogtid {
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+}
+
+.adresseogby {
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+}
+
+.datoogtid2 {
+margin-right: 15px;
+margin-left: 15px;
+}
+
+.adresseogby2 {
+margin-right: 15px;
+margin-left: 15px;
+}
+
+#author {
   width: 300px;
   height: 30px;
-  margin-bottom: 10px;
-  border-radius: 5px;
+}
+
+.pris2 {
+  margin-left: -170px;
+  margin-bottom: 20px;
+}
+
+.billedeimport {
+  margin-left: -190px;
 }
 
 #content {
   width: 300px;
   height: 100px;
-  margin-bottom: 30px;
-  border-radius: 5px;
 }
 
 .formtitel {
@@ -169,9 +267,14 @@ const onCreatePost = () => {
 }
 
 .formbeskrivelse {
-  margin-bottom: 20px;
-  width: auto;
+  width: 90%;
   font-size: 14px;
+  text-align: center;
+}
+
+.formknapper {
+  display: flex;
+  justify-content: space-between;
 }
 
 </style>
