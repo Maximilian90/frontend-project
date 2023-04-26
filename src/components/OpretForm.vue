@@ -61,6 +61,21 @@ function handleClick() {
   inputFile.value.click();
 }
 
+const closeForm = () => {
+  // Get the form container element and hide it
+  const formContainer = document.querySelector('#form-container');
+  formContainer.style.display = 'none';
+
+  // Reset form fields
+  title.value = '';
+  date.value = '';
+  location.value = '';
+  content.value = '';
+  username.value = '';
+  password.value = '';
+};
+
+
 onMounted(() => {
   inputFile.value.addEventListener('change', handleFileSelect);
 });
@@ -69,7 +84,7 @@ onMounted(() => {
 
 <template>
   <div class="form-overlay">
-    <div class="form_container">
+    <div class="form_container" id="form-container">
 
       <form @submit.prevent="onCreatePost">
         <h2 class="formtitel" >Opret Event</h2>
@@ -142,7 +157,7 @@ onMounted(() => {
 
           <div class="formknapper">
             <button class="createpostknap" type="submit">Opret Event</button>
-            <button class="createpostknap" type="close">Annullér</button>
+            <button class="annullerknap" type="button" onclick="closeForm()">Annullér</button>
           </div>
       </form>
     </div>
@@ -198,7 +213,7 @@ height: 45px;
 font-size: 16px;
 }
 
-button.createpostknap {
+button.createpostknap, .annullerknap {
   margin-right: 20px;
   margin-left: 20px;
 }
