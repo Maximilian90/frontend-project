@@ -60,7 +60,19 @@ fetch('https://sesh.mg-visions.com/index.php/wp-json/wp/v2/event')
 </script>
 
 <template>
+<nav>
+  <ul>
+    <li>Forside</li>
+    <li>Skateskole</li>
+    <li>Om Sesh</li>
+    <li>Tilmelding</li>
+    <li>Events</li>
+  </ul>
+</nav>
+<div class="darkframe">
+
   
+
   <div class="event_calender_list">
     <div class="list_head">
        <div>
@@ -91,7 +103,7 @@ fetch('https://sesh.mg-visions.com/index.php/wp-json/wp/v2/event')
       </div>
     </div>
   </div>
-
+</div>
   <teleport to="body">
     <div v-if="showForm">
           <OpretForm />
@@ -105,6 +117,45 @@ fetch('https://sesh.mg-visions.com/index.php/wp-json/wp/v2/event')
 
 <style scoped>
 
+
+
+
+/* nav*/
+
+nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2em;
+}
+ul {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  
+}
+
+li {
+  margin: 0 1em;
+  
+}
+
+
+/* layout*/
+.darkframe {
+  max-width: fit-content;
+  background-color: black;
+}
+
+
+
+
+
+
+/* liste calender*/
 
 .event_calender_row {
   display: flex;
@@ -146,13 +197,7 @@ fetch('https://sesh.mg-visions.com/index.php/wp-json/wp/v2/event')
   height: auto;
 }
 
-.btn_addevent {
-  height: 35px;
-  width: 100px; 
-  background-color: #CC3333;
-  color: rgb(255, 255, 255);
-  
-}
+
 
 .list_head {
   display: flex;
@@ -183,6 +228,7 @@ h3 {
 }
 
 .date_style {
+  justify-content: flex-start;
   text-align: center;
   font-size: 1.25em;
   font-weight: 600;
@@ -219,5 +265,11 @@ h3 {
   background-repeat: no-repeat;
   padding: 1em;
 }
-
+.btn_addevent {
+  height: 35px;
+  width: 100px; 
+  background-color: #CC3333;
+  color: rgb(255, 255, 255);
+  
+}
 </style>
