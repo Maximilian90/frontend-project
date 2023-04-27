@@ -147,7 +147,7 @@ li {
 /* layout*/
 .darkframe {
   max-width: fit-content;
-  background-color: black;
+  background-color: rgb(0, 0, 0);
 }
 
 
@@ -259,8 +259,8 @@ h3 {
 }
 
 #arrow-right {
-  background-image: url('assets/arrowleft.svg');
-  background-color: black;
+  background-image: url('assets/arrowright.svg');
+  background-color: rgb(255, 255, 255);
   background-size: contain;
   background-repeat: no-repeat;
   padding: 1em;
